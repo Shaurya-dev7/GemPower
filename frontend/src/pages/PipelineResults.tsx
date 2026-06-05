@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Database, FileCode, CheckCircle, AlertTriangle, Box, ShieldCheck, Zap, Settings2 } from 'lucide-react';
 
 export const PipelineResults = () => {
   const [activeTab, setActiveTab] = useState('intent');
@@ -10,7 +12,15 @@ export const PipelineResults = () => {
   }, []);
 
   if (!data) {
-    return <div className="panel">No data available. Please run a prompt first.</div>;
+    return (
+      <motion.div className="panel" initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <div style={{ textAlign: 'center', padding: '3rem' }}>
+          <AlertTriangle size={48} color="var(--warning)" style={{ margin: '0 auto 1rem auto' }} />
+          <h3>No data available</h3>
+          <p style={{ color: 'var(--text-secondary)' }}>Please ignite the compilation from the Builder first.</p>
+        </div>
+      </motion.div>
+    );
   }
 
   const { stages } = data;
@@ -25,30 +35,26 @@ export const PipelineResults = () => {
 
     return (
       <div className="metrics-grid" style={{ marginBottom: '2rem' }}>
-        <div className="metric-card">
-          <h4>Confidence</h4>
+        <motion.div className="metric-card" whileHover={{ scale: 1.02 }}>
+          <h4><Zap size={16} color="var(--accent)" /> Confidence</h4>
           <div className="value">{(confidence * 100).toFixed(0)}%</div>
-        </div>
-        <div className="metric-card">
-          <h4>Validation Score</h4>
+        </motion.div>
+        <motion.div className="metric-card" whileHover={{ scale: 1.02 }}>
+          <h4><ShieldCheck size={16} color="var(--accent)" /> Validation Score</h4>
           <div className="value">{valScore}/100</div>
-        </div>
-        <div className="metric-card">
-          <h4>Modules</h4>
+        </motion.div>
+        <motion.div className="metric-card" whileHover={{ scale: 1.02 }}>
+          <h4><Box size={16} color="var(--accent)" /> Modules</h4>
           <div className="value">{modulesCount}</div>
-        </div>
-        <div className="metric-card">
-          <h4>Entities</h4>
+        </motion.div>
+        <motion.div className="metric-card" whileHover={{ scale: 1.02 }}>
+          <h4><Database size={16} color="var(--accent)" /> Entities</h4>
           <div className="value">{entitiesCount}</div>
-        </div>
-        <div className="metric-card">
-          <h4>API Endpoints</h4>
+        </motion.div>
+        <motion.div className="metric-card" whileHover={{ scale: 1.02 }}>
+          <h4><FileCode size={16} color="var(--accent)" /> API Endpoints</h4>
           <div className="value">{apiEndpointsCount}</div>
-        </div>
-        <div className="metric-card">
-          <h4>Pages</h4>
-          <div className="value">{pagesCount}</div>
-        </div>
+        </motion.div>
       </div>
     );
   };
@@ -57,35 +63,35 @@ export const PipelineResults = () => {
     const arch = stages?.architecture;
     if (!arch) return null;
     
-    const sectionStyle = { padding: '0.5rem', background: 'var(--bg-secondary)', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' };
+    const sectionStyle = { padding: '0.75rem', background: 'var(--bg-dark)', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold', border: '1px solid var(--border)', marginBottom: '0.5rem' };
     
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+      <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }} style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
         <details>
           <summary style={sectionStyle}>▶ Modules ({arch.modules?.length || 0})</summary>
-          <div style={{ marginTop: '0.5rem' }}><pre>{JSON.stringify(arch.modules, null, 2)}</pre></div>
+          <div style={{ padding: '0.5rem 0' }}><pre>{JSON.stringify(arch.modules, null, 2)}</pre></div>
         </details>
         <details>
           <summary style={sectionStyle}>▶ Entities ({arch.entities?.length || 0})</summary>
-          <div style={{ marginTop: '0.5rem' }}><pre>{JSON.stringify(arch.entities, null, 2)}</pre></div>
+          <div style={{ padding: '0.5rem 0' }}><pre>{JSON.stringify(arch.entities, null, 2)}</pre></div>
         </details>
         <details>
           <summary style={sectionStyle}>▶ User Flows ({arch.user_flows?.length || 0})</summary>
-          <div style={{ marginTop: '0.5rem' }}><pre>{JSON.stringify(arch.user_flows, null, 2)}</pre></div>
+          <div style={{ padding: '0.5rem 0' }}><pre>{JSON.stringify(arch.user_flows, null, 2)}</pre></div>
         </details>
         <details>
           <summary style={sectionStyle}>▶ Permissions ({arch.permissions?.length || 0})</summary>
-          <div style={{ marginTop: '0.5rem' }}><pre>{JSON.stringify(arch.permissions, null, 2)}</pre></div>
+          <div style={{ padding: '0.5rem 0' }}><pre>{JSON.stringify(arch.permissions, null, 2)}</pre></div>
         </details>
         <details>
           <summary style={sectionStyle}>▶ System Components ({arch.system_components?.length || 0})</summary>
-          <div style={{ marginTop: '0.5rem' }}><pre>{JSON.stringify(arch.system_components, null, 2)}</pre></div>
+          <div style={{ padding: '0.5rem 0' }}><pre>{JSON.stringify(arch.system_components, null, 2)}</pre></div>
         </details>
         <details>
           <summary style={sectionStyle}>▶ Raw JSON</summary>
-          <div style={{ marginTop: '0.5rem' }}><pre>{JSON.stringify(arch, null, 2)}</pre></div>
+          <div style={{ padding: '0.5rem 0' }}><pre>{JSON.stringify(arch, null, 2)}</pre></div>
         </details>
-      </div>
+      </motion.div>
     );
   };
 
@@ -103,21 +109,21 @@ export const PipelineResults = () => {
       });
     });
 
-    const sectionStyle = { padding: '0.5rem', background: 'var(--bg-secondary)', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' };
+    const sectionStyle = { padding: '0.75rem', background: 'var(--bg-dark)', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold', border: '1px solid var(--border)', marginBottom: '0.5rem' };
 
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+      <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
         <div className="metrics-grid">
-          <div className="metric-card"><h4>Tables</h4><div className="value">{tables}</div></div>
-          <div className="metric-card"><h4>API Endpoints</h4><div className="value">{endpoints}</div></div>
-          <div className="metric-card"><h4>Forms</h4><div className="value">{forms}</div></div>
-          <div className="metric-card"><h4>Pages</h4><div className="value">{pages}</div></div>
+          <motion.div className="metric-card" whileHover={{ scale: 1.02 }}><h4>Tables</h4><div className="value">{tables}</div></motion.div>
+          <motion.div className="metric-card" whileHover={{ scale: 1.02 }}><h4>API Endpoints</h4><div className="value">{endpoints}</div></motion.div>
+          <motion.div className="metric-card" whileHover={{ scale: 1.02 }}><h4>Forms</h4><div className="value">{forms}</div></motion.div>
+          <motion.div className="metric-card" whileHover={{ scale: 1.02 }}><h4>Pages</h4><div className="value">{pages}</div></motion.div>
         </div>
         <details>
           <summary style={sectionStyle}>▶ Raw JSON</summary>
-          <div style={{ marginTop: '0.5rem' }}><pre>{JSON.stringify(schemas, null, 2)}</pre></div>
+          <div style={{ padding: '0.5rem 0' }}><pre>{JSON.stringify(schemas, null, 2)}</pre></div>
         </details>
-      </div>
+      </motion.div>
     );
   };
 
@@ -125,41 +131,45 @@ export const PipelineResults = () => {
     const val = stages?.validation;
     if (!val) return null;
     
-    const sectionStyle = { padding: '0.5rem', background: 'var(--bg-secondary)', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' };
+    const sectionStyle = { padding: '0.75rem', background: 'var(--bg-dark)', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold', border: '1px solid var(--border)', marginBottom: '0.5rem' };
     
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+      <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
         <div className="metrics-grid">
-          <div className="metric-card">
+          <motion.div className="metric-card" whileHover={{ scale: 1.02 }}>
             <h4>Validation Score</h4>
             <div className="value">{val.score}/100</div>
-          </div>
-          <div className="metric-card">
+          </motion.div>
+          <motion.div className="metric-card" whileHover={{ scale: 1.02 }}>
             <h4>Status</h4>
-            <div className="value" style={{ color: val.is_valid ? '#4ade80' : '#f87171' }}>
+            <div className="value" style={{ color: val.is_valid ? 'var(--success)' : 'var(--error)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              {val.is_valid ? <CheckCircle size={32} /> : <AlertTriangle size={32} />}
               {val.is_valid ? 'PASS' : 'FAIL'}
             </div>
-          </div>
-          <div className="metric-card">
+          </motion.div>
+          <motion.div className="metric-card" whileHover={{ scale: 1.02 }}>
             <h4>Errors</h4>
-            <div className="value">{val.errors?.length || 0}</div>
-          </div>
-          <div className="metric-card">
+            <div className="value" style={{ color: val.errors?.length ? 'var(--error)' : 'inherit'}}>{val.errors?.length || 0}</div>
+          </motion.div>
+          <motion.div className="metric-card" whileHover={{ scale: 1.02 }}>
             <h4>Warnings</h4>
-            <div className="value">{val.warnings?.length || 0}</div>
-          </div>
+            <div className="value" style={{ color: val.warnings?.length ? 'var(--warning)' : 'inherit'}}>{val.warnings?.length || 0}</div>
+          </motion.div>
         </div>
         <details>
           <summary style={sectionStyle}>▶ Raw JSON</summary>
-          <div style={{ marginTop: '0.5rem' }}><pre>{JSON.stringify(val, null, 2)}</pre></div>
+          <div style={{ padding: '0.5rem 0' }}><pre>{JSON.stringify(val, null, 2)}</pre></div>
         </details>
-      </div>
+      </motion.div>
     );
   };
 
   return (
-    <div className="panel">
-      <h2 style={{ marginBottom: '1.5rem' }}>Pipeline Results</h2>
+    <div className="panel" style={{ flex: 1 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
+        <Settings2 size={32} color="var(--accent)" />
+        <h2 style={{ margin: 0 }} className="gradient-text">Architectural Blueprint</h2>
+      </div>
       
       {renderSummaryHeader()}
 
@@ -170,11 +180,29 @@ export const PipelineResults = () => {
         <button className={`tab ${activeTab === 'validation' ? 'active' : ''}`} onClick={() => setActiveTab('validation')}>Validation</button>
       </div>
 
-      <div className="tab-content">
-        {activeTab === 'intent' && <pre>{JSON.stringify(stages?.intent, null, 2)}</pre>}
-        {activeTab === 'architecture' && renderArchitecture()}
-        {activeTab === 'schemas' && renderSchemas()}
-        {activeTab === 'validation' && renderValidation()}
+      <div className="tab-content" style={{ position: 'relative' }}>
+        <AnimatePresence mode="wait">
+          {activeTab === 'intent' && (
+            <motion.div key="intent" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.2 }}>
+              <pre>{JSON.stringify(stages?.intent, null, 2)}</pre>
+            </motion.div>
+          )}
+          {activeTab === 'architecture' && (
+            <motion.div key="architecture" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.2 }}>
+              {renderArchitecture()}
+            </motion.div>
+          )}
+          {activeTab === 'schemas' && (
+            <motion.div key="schemas" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.2 }}>
+              {renderSchemas()}
+            </motion.div>
+          )}
+          {activeTab === 'validation' && (
+            <motion.div key="validation" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.2 }}>
+              {renderValidation()}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );

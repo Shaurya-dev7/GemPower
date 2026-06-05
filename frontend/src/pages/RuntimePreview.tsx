@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { Play, LayoutTemplate, AlertTriangle } from 'lucide-react';
 
 export const RuntimePreview = () => {
   const [hasPreview, setHasPreview] = useState<boolean | null>(null);
@@ -10,28 +12,53 @@ export const RuntimePreview = () => {
   }, []);
 
   return (
-    <div className="panel" style={{ height: '80vh', padding: '1rem', display: 'flex', flexDirection: 'column' }}>
-      <h2 style={{ marginBottom: '1rem' }}>Runtime Preview</h2>
-      <p style={{ color: 'var(--text-secondary)', marginBottom: '1rem' }}>
-        This iframe renders the generated application from your most recent compile request.
+    <div className="panel" style={{ flex: 1, padding: '2rem', display: 'flex', flexDirection: 'column' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
+        <Play size={32} color="var(--accent)" />
+        <h2 style={{ margin: 0 }} className="gradient-text">Runtime Preview</h2>
+      </div>
+      
+      <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem', fontSize: '1.1rem' }}>
+        This isolated environment renders the generated application from your most recent compilation request.
       </p>
       
-      <div className="iframe-container" style={{ flexGrow: 1 }}>
+      <motion.div 
+        className="iframe-container" 
+        initial={{ opacity: 0, scale: 0.98 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.4, delay: 0.1 }}
+      >
         {hasPreview === null ? (
-          <div style={{ padding: '2rem', textAlign: 'center', color: 'var(--text-secondary)' }}>Loading preview...</div>
+          <div style={{ padding: '4rem', textAlign: 'center', color: 'var(--text-secondary)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem', justifyContent: 'center', height: '100%' }}>
+            <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 2, ease: "linear" }}>
+              <LayoutTemplate size={48} color="var(--accent)" />
+            </motion.div>
+            <span style={{ fontSize: '1.2rem' }}>Initializing sandbox environment...</span>
+          </div>
         ) : hasPreview ? (
           <iframe 
             src="http://localhost:8000/runtime-preview" 
             title="Runtime Preview" 
-            style={{ width: '100%', height: '100%', border: 'none', borderRadius: '8px' }} 
+            style={{ width: '100%', height: '100%', border: 'none' }} 
           />
         ) : (
-          <div style={{ padding: '2rem', textAlign: 'center', color: 'var(--text-secondary)', border: '1px dashed var(--border)', borderRadius: '8px' }}>
-            <h3>No runtime generated yet.</h3>
-            <p>Run a compile first.</p>
+          <div style={{ 
+            padding: '4rem', 
+            textAlign: 'center', 
+            color: 'var(--text-secondary)', 
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            background: 'var(--bg-dark)'
+          }}>
+            <AlertTriangle size={64} color="var(--warning)" style={{ marginBottom: '1.5rem' }} />
+            <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>No runtime generated yet</h3>
+            <p style={{ fontSize: '1.1rem' }}>Please ignite the compilation from the Builder first.</p>
           </div>
         )}
-      </div>
+      </motion.div>
     </div>
   );
 };
