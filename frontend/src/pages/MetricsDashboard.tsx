@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import axios from 'axios';
-import { Activity, Zap, Layers, DollarSign, Clock, ShieldCheck } from 'lucide-react';
+import { Activity, Zap, Clock, ShieldCheck } from 'lucide-react';
 
 export const MetricsDashboard = () => {
   const [metrics, setMetrics] = useState<any>(null);

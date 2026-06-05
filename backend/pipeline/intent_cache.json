@@ -296,5 +296,39 @@
       "implemented_features": 2,
       "coverage_score": 100
     }
+  },
+  "Build a CRM with login, contacts, dashboard and subscriptions": {
+    "normalized_requirements": "A CRM application with contacts, subscriptions, dashboard, authentication.",
+    "intent_config": {
+      "app_type": "crm",
+      "features": [
+        "contacts",
+        "subscriptions",
+        "dashboard",
+        "authentication"
+      ],
+      "roles": [
+        "admin",
+        "user"
+      ],
+      "entities": [
+        "contact",
+        "subscription",
+        "user"
+      ],
+      "business_requirements": [
+        "role_based_access"
+      ],
+      "confidence": 0.85,
+      "assumptions": [],
+      "missing_information": [],
+      "forbidden_features": [],
+      "forbidden_entities": []
+    },
+    "coverage": {
+      "requested_features": 4,
+      "implemented_features": 4,
+      "coverage_score": 100
+    }
   }
 }

@@ -4,7 +4,7 @@ import { PromptInput } from './pages/PromptInput';
 import { PipelineResults } from './pages/PipelineResults';
 import { RuntimePreview } from './pages/RuntimePreview';
 import { MetricsDashboard } from './pages/MetricsDashboard';
-import { Sparkles, TerminalSquare, Activity, Settings2, Github, BookOpen } from 'lucide-react';
+import { Sparkles, TerminalSquare, Activity, Settings2, Code, BookOpen } from 'lucide-react';
 import './index.css';
 
 const Navigation = () => {
@@ -40,7 +40,7 @@ const Navigation = () => {
       </div>
       <div className="nav-actions">
         <a href="https://github.com/Shaurya-dev7/GemPower" target="_blank" rel="noopener noreferrer" className="icon-link">
-          <Github size={20} />
+          <Code size={20} />
         </a>
         <a href="#" className="icon-link">
           <BookOpen size={20} />

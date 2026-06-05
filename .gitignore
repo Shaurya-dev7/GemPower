@@ -9,3 +9,8 @@ backend/pipeline/intent_cache.json
 backend/evaluation/evaluation_report.json
 backend/evaluation/evaluation_report.md
 runtime_preview.html
+node_modules/
+dist/
+.pytest_cache/
+.idea/
+.vscode/

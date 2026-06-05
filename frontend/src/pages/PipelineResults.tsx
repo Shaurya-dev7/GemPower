@@ -31,7 +31,6 @@ export const PipelineResults = () => {
     const modulesCount = stages?.architecture?.modules?.length || 0;
     const entitiesCount = stages?.architecture?.entities?.length || 0;
     const apiEndpointsCount = stages?.schemas?.api?.length || 0;
-    const pagesCount = stages?.schemas?.ui?.length || 0;
 
     return (
       <div className="metrics-grid" style={{ marginBottom: '2rem' }}>
