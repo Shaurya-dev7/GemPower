@@ -24,6 +24,7 @@ export const RuntimePreview = () => {
       
       <motion.div 
         className="iframe-container" 
+        style={{ flex: 1, display: 'flex', flexDirection: 'column', minHeight: 0 }}
         initial={{ opacity: 0, scale: 0.98 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.4, delay: 0.1 }}
@@ -39,7 +40,7 @@ export const RuntimePreview = () => {
           <iframe 
             src="http://localhost:8000/runtime-preview" 
             title="Runtime Preview" 
-            style={{ width: '100%', height: '100%', border: 'none' }} 
+            style={{ width: '100%', flex: 1, border: 'none', display: 'block' }} 
           />
         ) : (
           <div style={{ 

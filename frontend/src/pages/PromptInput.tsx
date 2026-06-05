@@ -6,7 +6,7 @@ import { Sparkles, ArrowRight } from 'lucide-react';
 import heroBg from '../assets/hero_bg_black.png';
 
 export const PromptInput = () => {
-  const [prompt, setPrompt] = useState('Build a powerful CRM with dynamic dashboards and subscriptions...');
+  const [prompt, setPrompt] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 

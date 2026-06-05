@@ -266,5 +266,35 @@
       "implemented_features": 11,
       "coverage_score": 100
     }
+  },
+  "food delivery app": {
+    "normalized_requirements": "Generic application utility.",
+    "intent_config": {
+      "app_type": "utility",
+      "features": [
+        "home",
+        "authentication"
+      ],
+      "roles": [
+        "user"
+      ],
+      "entities": [
+        "item",
+        "user"
+      ],
+      "business_requirements": [],
+      "confidence": 0.45,
+      "assumptions": [],
+      "missing_information": [
+        "core app logic"
+      ],
+      "forbidden_features": [],
+      "forbidden_entities": []
+    },
+    "coverage": {
+      "requested_features": 2,
+      "implemented_features": 2,
+      "coverage_score": 100
+    }
   }
 }
