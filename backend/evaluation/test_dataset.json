@@ -1,0 +1,31 @@
+{
+  "normal": [
+    "Build a CRM with login, contacts, dashboard, and role-based access.",
+    "Build a Marketplace with buyers, sellers, products, and checkout.",
+    "Build a School Management system with students, teachers, classes, and grades.",
+    "Build an Inventory System with items, warehouses, shipments, and tracking.",
+    "Build a SaaS Dashboard with subscriptions, analytics, users, and billing.",
+    "Build a project management tool with tasks, projects, users, and deadlines.",
+    "Build a social network with profiles, posts, comments, and likes.",
+    "Build a forum with topics, threads, replies, and moderators.",
+    "Build an HR portal with employees, departments, leave requests, and payroll.",
+    "Build an e-commerce store with catalog, cart, orders, and payments."
+  ],
+  "edge_cases": [
+    "Build a marketplace but no sellers.",
+    "Build a CRM but no users.",
+    "Build something for schools.",
+    "Build an app.",
+    "Conflicting permissions: admin can't read but can write.",
+    "A database with no tables.",
+    "Just a login page and nothing else.",
+    "Build an app that has 0 features.",
+    "Very ambiguous request about making money.",
+    "Generate a system that only has a single entity."
+  ],
+  "determinism_benchmarks": [
+    "Build a CRM with login, contacts, dashboard, and role-based access.",
+    "Build a Marketplace with buyers, sellers, products, and checkout.",
+    "Build a School Management system with students, teachers, classes, and grades."
+  ]
+}

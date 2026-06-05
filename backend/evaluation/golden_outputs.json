@@ -1,0 +1,84 @@
+{
+  "golden_cases": [
+    {
+      "prompt": "Build a CRM with login, contacts, dashboard, role-based access, and premium subscriptions.",
+      "expected_app_type": "crm"
+    },
+    {
+      "prompt": "Create an e-commerce store with a shopping cart, product catalog, user reviews, and Stripe checkout.",
+      "expected_app_type": "ecommerce"
+    },
+    {
+      "prompt": "Make a project management tool with Kanban boards, task assignments, due dates, and email notifications.",
+      "expected_app_type": "project_management"
+    },
+    {
+      "prompt": "Build a blogging platform where users can write posts, leave comments, and administrators can moderate content.",
+      "expected_app_type": "blog"
+    },
+    {
+      "prompt": "I need a helpdesk ticketing system with user accounts, priority levels, agent assignments, and status tracking.",
+      "expected_app_type": "helpdesk"
+    },
+    {
+      "prompt": "Create a real estate listing app with property search, agent contact forms, and a map view.",
+      "expected_app_type": "real_estate"
+    },
+    {
+      "prompt": "Build a learning management system with courses, video uploads, student progress tracking, and certificates.",
+      "expected_app_type": "lms"
+    },
+    {
+      "prompt": "Make an inventory management app with barcode scanning, stock alerts, and supplier tracking.",
+      "expected_app_type": "inventory_management"
+    },
+    {
+      "prompt": "Create a fitness tracking app where users log workouts, see charts of progress, and earn badges.",
+      "expected_app_type": "fitness_tracker"
+    },
+    {
+      "prompt": "Build a booking system for a hair salon with calendar integration, staff schedules, and SMS reminders.",
+      "expected_app_type": "booking_system"
+    },
+    {
+      "prompt": "Build a marketplace for freelancers",
+      "expected_app_type": "marketplace"
+    },
+    {
+      "prompt": "I need something for schools",
+      "expected_app_type": "school_management"
+    },
+    {
+      "prompt": "Make an app for teachers",
+      "expected_app_type": "school_management"
+    },
+    {
+      "prompt": "Build a marketplace but don't allow sellers",
+      "expected_app_type": "resource_sharing"
+    },
+    {
+      "prompt": "Create a system where nobody can login, it's just a public dashboard of random numbers",
+      "expected_app_type": "dashboard"
+    },
+    {
+      "prompt": "Build Facebook but for dogs",
+      "expected_app_type": "social_media"
+    },
+    {
+      "prompt": "Make an app that does absolutely nothing except show a blank screen",
+      "expected_app_type": "utility"
+    },
+    {
+      "prompt": "I want an enterprise ERP system but it only has one button that says 'Buy Now'",
+      "expected_app_type": "erp"
+    },
+    {
+      "prompt": "Build a healthcare app without any security or authentication",
+      "expected_app_type": "healthcare"
+    },
+    {
+      "prompt": "Create a chat app with no way to send messages",
+      "expected_app_type": "chat"
+    }
+  ]
+}

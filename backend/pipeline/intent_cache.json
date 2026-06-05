@@ -1,0 +1,270 @@
+{
+  "Build a CRM with contacts and subscriptions": {
+    "normalized_requirements": "A CRM application with contacts, subscriptions, authentication, dashboard.",
+    "intent_config": {
+      "app_type": "crm",
+      "features": [
+        "contacts",
+        "subscriptions",
+        "authentication",
+        "dashboard"
+      ],
+      "roles": [
+        "admin",
+        "user"
+      ],
+      "entities": [
+        "contact",
+        "subscription",
+        "user"
+      ],
+      "business_requirements": [
+        "role_based_access"
+      ],
+      "confidence": 0.75,
+      "assumptions": [],
+      "missing_information": [],
+      "forbidden_features": [],
+      "forbidden_entities": []
+    },
+    "coverage": {
+      "requested_features": 4,
+      "implemented_features": 4,
+      "coverage_score": 100
+    }
+  },
+  "Build an app": {
+    "normalized_requirements": "Generic application utility.",
+    "intent_config": {
+      "app_type": "utility",
+      "features": [
+        "home",
+        "authentication"
+      ],
+      "roles": [
+        "user"
+      ],
+      "entities": [
+        "item",
+        "user"
+      ],
+      "business_requirements": [],
+      "confidence": 0.45,
+      "assumptions": [],
+      "missing_information": [
+        "core app logic"
+      ],
+      "forbidden_features": [],
+      "forbidden_entities": []
+    },
+    "coverage": {
+      "requested_features": 2,
+      "implemented_features": 2,
+      "coverage_score": 100
+    }
+  },
+  "Build a CRM": {
+    "normalized_requirements": "A CRM application with authentication, contacts, dashboard.",
+    "intent_config": {
+      "app_type": "crm",
+      "features": [
+        "authentication",
+        "contacts",
+        "dashboard"
+      ],
+      "roles": [
+        "admin",
+        "user"
+      ],
+      "entities": [
+        "user",
+        "contact"
+      ],
+      "business_requirements": [
+        "role_based_access"
+      ],
+      "confidence": 0.45,
+      "assumptions": [],
+      "missing_information": [
+        "detailed workflow specifications"
+      ],
+      "forbidden_features": [],
+      "forbidden_entities": []
+    },
+    "coverage": {
+      "requested_features": 3,
+      "implemented_features": 3,
+      "coverage_score": 100
+    }
+  },
+  "Build a marketplace for freelancers": {
+    "normalized_requirements": "Freelancer marketplace with freelancers.",
+    "intent_config": {
+      "app_type": "marketplace",
+      "features": [
+        "freelancers"
+      ],
+      "roles": [
+        "client",
+        "freelancer",
+        "admin"
+      ],
+      "entities": [
+        "freelancer"
+      ],
+      "business_requirements": [
+        "escrow_protection"
+      ],
+      "confidence": 0.6,
+      "assumptions": [
+        "Stripe escrow for payment"
+      ],
+      "missing_information": [],
+      "forbidden_features": [],
+      "forbidden_entities": []
+    },
+    "coverage": {
+      "requested_features": 1,
+      "implemented_features": 1,
+      "coverage_score": 100
+    }
+  },
+  "Build a school management system": {
+    "normalized_requirements": "School management platform with student_roster, grading_sheets, attendance, teacher_management, parent_portal.",
+    "intent_config": {
+      "app_type": "school_management",
+      "features": [
+        "student_roster",
+        "grading_sheets",
+        "attendance",
+        "teacher_management",
+        "parent_portal"
+      ],
+      "roles": [
+        "admin",
+        "teacher",
+        "student",
+        "parent"
+      ],
+      "entities": [
+        "student",
+        "grade",
+        "attendance",
+        "teacher",
+        "parent"
+      ],
+      "business_requirements": [
+        "grade_gating",
+        "attendance_tracking"
+      ],
+      "confidence": 0.5,
+      "assumptions": [
+        "US K-12 style"
+      ],
+      "missing_information": [
+        "grading scale details"
+      ],
+      "forbidden_features": [],
+      "forbidden_entities": []
+    },
+    "coverage": {
+      "requested_features": 5,
+      "implemented_features": 5,
+      "coverage_score": 100
+    }
+  },
+  "Build a marketplace but don't allow sellers": {
+    "normalized_requirements": "Freelancer marketplace with freelancers.",
+    "intent_config": {
+      "app_type": "marketplace",
+      "features": [
+        "freelancers"
+      ],
+      "roles": [
+        "client",
+        "freelancer"
+      ],
+      "entities": [
+        "freelancer"
+      ],
+      "business_requirements": [
+        "no_sellers_allowed",
+        "escrow_protection"
+      ],
+      "confidence": 0.7,
+      "assumptions": [
+        "Free exchange model without dedicated sellers"
+      ],
+      "missing_information": [],
+      "forbidden_features": [
+        "seller"
+      ],
+      "forbidden_entities": [
+        "seller"
+      ]
+    },
+    "coverage": {
+      "requested_features": 1,
+      "implemented_features": 1,
+      "coverage_score": 100
+    }
+  },
+  "Build a multi tenant CRM with RBAC, billing, audit logs, SSO, contacts, reporting, workflows, subscriptions": {
+    "normalized_requirements": "A CRM application with contacts, subscriptions, billing, audit_logs, rbac, sso, reporting, workflows, multi_tenancy, authentication, dashboard.",
+    "intent_config": {
+      "app_type": "crm",
+      "features": [
+        "contacts",
+        "subscriptions",
+        "billing",
+        "audit_logs",
+        "rbac",
+        "sso",
+        "reporting",
+        "workflows",
+        "multi_tenancy",
+        "authentication",
+        "dashboard"
+      ],
+      "roles": [
+        "admin",
+        "user",
+        "manager",
+        "viewer",
+        "tenant_admin"
+      ],
+      "entities": [
+        "contact",
+        "subscription",
+        "invoice",
+        "payment",
+        "audit_entry",
+        "role",
+        "permission",
+        "sso_session",
+        "report",
+        "workflow",
+        "tenant",
+        "user"
+      ],
+      "business_requirements": [
+        "role_based_access",
+        "tenant_isolation",
+        "payment_processing"
+      ],
+      "confidence": 0.8,
+      "assumptions": [
+        "Stripe is preferred payment processor",
+        "OAuth 2.0 provider assumed"
+      ],
+      "missing_information": [],
+      "forbidden_features": [],
+      "forbidden_entities": []
+    },
+    "coverage": {
+      "requested_features": 11,
+      "implemented_features": 11,
+      "coverage_score": 100
+    }
+  }
+}

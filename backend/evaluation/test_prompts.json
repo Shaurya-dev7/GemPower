@@ -1,0 +1,26 @@
+{
+  "normal_prompts": [
+    "Build a CRM with login, contacts, dashboard, role-based access, and premium subscriptions.",
+    "Create an e-commerce store with a shopping cart, product catalog, user reviews, and Stripe checkout.",
+    "Make a project management tool with Kanban boards, task assignments, due dates, and email notifications.",
+    "Build a blogging platform where users can write posts, leave comments, and administrators can moderate content.",
+    "I need a helpdesk ticketing system with user accounts, priority levels, agent assignments, and status tracking.",
+    "Create a real estate listing app with property search, agent contact forms, and a map view.",
+    "Build a learning management system with courses, video uploads, student progress tracking, and certificates.",
+    "Make an inventory management app with barcode scanning, stock alerts, and supplier tracking.",
+    "Create a fitness tracking app where users log workouts, see charts of progress, and earn badges.",
+    "Build a booking system for a hair salon with calendar integration, staff schedules, and SMS reminders."
+  ],
+  "edge_cases": [
+    "Build a marketplace for freelancers",
+    "I need something for schools",
+    "Make an app for teachers",
+    "Build a marketplace but don't allow sellers",
+    "Create a system where nobody can login, it's just a public dashboard of random numbers",
+    "Build Facebook but for dogs",
+    "Make an app that does absolutely nothing except show a blank screen",
+    "I want an enterprise ERP system but it only has one button that says 'Buy Now'",
+    "Build a healthcare app without any security or authentication",
+    "Create a chat app with no way to send messages"
+  ]
+}
