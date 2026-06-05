@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Play, LayoutTemplate, AlertTriangle } from 'lucide-react';
+import { API_URL } from '../config/api';
 
 export const RuntimePreview = () => {
   const [hasPreview, setHasPreview] = useState<boolean | null>(null);
 
   useEffect(() => {
-    fetch('http://localhost:8000/runtime-preview')
+    fetch(`${API_URL}/runtime-preview`)
       .then(res => setHasPreview(res.ok))
       .catch(() => setHasPreview(false));
   }, []);
@@ -38,7 +39,7 @@ export const RuntimePreview = () => {
           </div>
         ) : hasPreview ? (
           <iframe 
-            src="http://localhost:8000/runtime-preview" 
+            src={`${API_URL}/runtime-preview`} 
             title="Runtime Preview" 
             style={{ width: '100%', flex: 1, border: 'none', display: 'block' }} 
           />

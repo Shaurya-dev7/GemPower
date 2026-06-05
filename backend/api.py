@@ -8,10 +8,11 @@ from backend.services.compiler_service import CompilerService
 
 app = FastAPI(title="AI Compiler API")
 
-# Allow local frontend to access API
+FRONTEND_URL = os.getenv("FRONTEND_URL", "*")
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[FRONTEND_URL],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import axios from 'axios';
 import { Activity, Zap, Clock, ShieldCheck } from 'lucide-react';
+import { API_URL } from '../config/api';
 
 export const MetricsDashboard = () => {
   const [metrics, setMetrics] = useState<any>(null);
@@ -10,7 +11,7 @@ export const MetricsDashboard = () => {
   useEffect(() => {
     const fetchMetrics = async () => {
       try {
-        const res = await axios.get('http://localhost:8000/api/metrics');
+        const res = await axios.get(`${API_URL}/api/metrics`);
         setMetrics(res.data);
       } catch (err) {
         console.error(err);

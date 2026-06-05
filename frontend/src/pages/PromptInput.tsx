@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import axios from 'axios';
 import { Sparkles, ArrowRight } from 'lucide-react';
 import heroBg from '../assets/hero_bg_black.png';
+import { API_URL } from '../config/api';
 
 export const PromptInput = () => {
   const [prompt, setPrompt] = useState('');
@@ -13,7 +14,7 @@ export const PromptInput = () => {
   const handleCompile = async () => {
     setLoading(true);
     try {
-      const res = await axios.post('http://localhost:8000/api/compile', { prompt });
+      const res = await axios.post(`${API_URL}/api/compile`, { prompt });
       localStorage.setItem('compile_results', JSON.stringify(res.data));
       navigate('/results');
     } catch (err) {
